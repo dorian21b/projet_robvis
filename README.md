@@ -37,6 +37,7 @@ Comme les plans de la caméra et d'intéraction (celui où les objets sont dispo
 **Changement de repère**
 
 $$  \begin{bmatrix} x' \\ y' \\ z' \\ 1 \end{bmatrix} = \begin{bmatrix} a & b & c & t_x \\ d & e & f & t_y \\ g & h & i & t_z \\ 0 & 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix}$$
+
 Où :
 
 - $(x, y, z)$ sont les coordonnées du point source,
