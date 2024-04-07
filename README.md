@@ -7,9 +7,10 @@ Pour utiliser notre programme, il faut tout d'abord enregistrer des images des f
 ## Détails sur la démarche
 
 <div style="display:flex;">
-    <img src="robot_yumi.jpeg" alt="Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle." style="width:50%;">
-    <img src="Intel.jpeg" alt="Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle." style="width:50%;">
+    <img src="robot_yumi.jpeg" alt="Description de l'image 1" style="width:50%;">
+    <img src="Intel.jpeg" alt="Description de l'image 2" style="width:50%;">
 </div>
+
 
 Notre projet était d'établir une connection entre le robot YuMi de ABB et une caméra de profondeur. Il peut se hiérarchiser en différentes étapes:
 1. Acquisition de l'image
@@ -42,7 +43,9 @@ Où :
 - $(t_x, t_y, t_z)$ sont les composantes de la translation dans les directions $x, y$ et $z$ respectivement.
 
 Dans ce contexte, la matrice 
+
 $$ \begin{bmatrix} a & b & c & t_x \\ d & e & f & t_y \\ g & h & i & t_z \\ 0 & 0 & 0 & 1 \end{bmatrix}$$  
+
 est dite de transformation affine où les coefficients de cette matrice correspondent aux paramètres de la transformation affine. On trouve cette matrice en faisant une résolution linéaire en choisissant 4 points dont on connait les coordonnées dans les deux repères. On trouve enfin les coordonées de l'objet dans le repère du robot.
 
 Ensuite, on calcul l'orientation de l'objet. Pour ce faire on prend les coordonées $(x_i,y_i)$ de chaque pixel. On calcule
@@ -53,7 +56,9 @@ On crée alors une matrice C tel que
 
 $$ C = M^TM $$
 
-Où $$ M^T = \begin{bmatrix} \bar{x}_1 & \bar{x}_2 & \cdots & \bar{x}_n \\ \bar{y}_1 & \bar{y}_2 & \cdots & \bar{y}_n  \end{bmatrix}$$
+Où 
+
+$$ M^T = \begin{bmatrix} \bar{x}_1 & \bar{x}_2 & \cdots & \bar{x}_n \\ \bar{y}_1 & \bar{y}_2 & \cdots & \bar{y}_n  \end{bmatrix}$$
 
 On extrait le vecteur propre associé à la valeur propre maximale de la matrice C ce qui correspond à l'orientation de l'objet. On convertit ce vecteur en quaternion. 
 
