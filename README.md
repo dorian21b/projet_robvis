@@ -7,8 +7,8 @@ Pour utiliser notre programme, il faut tout d'abord enregistrer des images des f
 ## Détails sur la démarche
 
 
-<img src="robot_yumi.jpeg" alt="Description de l'image 1" width="250">
-<img src="Intel.jpeg" alt="Description de l'image 2" width="250">
+<img src="robot_yumi.jpeg" alt="Description de l'image 1" width="200">
+<img src="Intel.jpeg" alt="Description de l'image 2" width="200">
 
 
 Notre projet était d'établir une connection entre le robot YuMi de ABB et une caméra de profondeur. Il peut se hiérarchiser en différentes étapes:
@@ -60,7 +60,7 @@ $$ C = M^TM $$
 
 Où 
 
-$$ M = \begin{bmatrix} \bar{x}_1 & {y}_1\\
+$$ M = \begin{bmatrix} \bar{x}_1 & \bar{y}_1\\
 \bar{x}_2 & \bar{y}_2 \\ 
 \vdots & \vdots\\
 \bar{x}_n& \bar{y}_n  \end{bmatrix}$$
