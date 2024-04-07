@@ -6,10 +6,9 @@ Pour utiliser notre programme, il faut tout d'abord enregistrer des images des f
 
 ## Détails sur la démarche
 
-<div style="display:flex;">
-    <img src="robot_yumi.jpeg" alt="Description de l'image 1" style="width:50%;">
-    <img src="Intel.jpeg" alt="Description de l'image 2" style="width:50%;">
-</div>
+
+<img src="robot_yumi.jpeg" alt="Description de l'image 1" width="250">
+<img src="Intel.jpeg" alt="Description de l'image 2" width="250">
 
 
 Notre projet était d'établir une connection entre le robot YuMi de ABB et une caméra de profondeur. Il peut se hiérarchiser en différentes étapes:
@@ -22,7 +21,9 @@ Notre projet était d'établir une connection entre le robot YuMi de ABB et une 
 
 Nous avons fixé une caméra Intel au dessus du robot Yumi, nous permettant de capturer des images en vue du dessus des objets.
 
-![Screenshot](image_cam.jpg)
+<div style="text-align: center;">
+    <img src="image_cam.jpg" width="300" alt="Description de l'image">
+</div>
 
 *Je ne sais pas quoi mettre comme explication après* 
 
@@ -34,6 +35,7 @@ Une fois l'image traité, on peut récupérer tout d'abord le centre de gravité
 Comme les plans de la caméra et d'intéraction (celui où les objets sont disposés) sont parallèle. Ceci permet d'établir une relation linéaire entre les coordonnées des objets dans le repère de la caméra et le repère du robot. 
 
 **Changement de repère**
+
 $$  \begin{bmatrix} x' \\ y' \\ z' \\ 1 \end{bmatrix} = \begin{bmatrix} a & b & c & t_x \\ d & e & f & t_y \\ g & h & i & t_z \\ 0 & 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix}$$
 Où :
 
@@ -58,7 +60,10 @@ $$ C = M^TM $$
 
 Où 
 
-$$ M^T = \begin{bmatrix} \bar{x}_1 & \bar{x}_2 & \cdots & \bar{x}_n \\ \bar{y}_1 & \bar{y}_2 & \cdots & \bar{y}_n  \end{bmatrix}$$
+$$ M = \begin{bmatrix} \bar{x}_1 & {y}_1\\
+\bar{x}_2 & \bar{y}_2 \\ 
+\vdots & \vdots\\
+\bar{x}_n& \bar{y}_n  \end{bmatrix}$$
 
 On extrait le vecteur propre associé à la valeur propre maximale de la matrice C ce qui correspond à l'orientation de l'objet. On convertit ce vecteur en quaternion. 
 
