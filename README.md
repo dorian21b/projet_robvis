@@ -10,13 +10,12 @@ To use our program, follow these steps:
 2. Run the *template_match.py* program to obtain the necessary variables for the robot.
 3. Use the *socket.py* program to send the variables to RobotStudio.
 
-
-## Détails sur la démarche
+## Project Workflow Overview
 
 ![Description de l'image 1](robot_yumi.jpeg)
 ![Description de l'image 2](Intel.jpeg)
 
-Our project aimed to establish a connection between the ABB YuMi robot and a depth camera. It can be broken down into several stages:
+The project can be broken down into several key stages:
 
 1. **Image Acquisition**
 2. **Image Processing**
@@ -29,13 +28,15 @@ We mounted an Intel camera above the YuMi robot, allowing us to capture top-down
 
 ![Description de l'image](image_cam.jpg)
 
-### Traitement de l'image
+### Image Processing
 
 Once the image is processed, we can first retrieve the centroid $(\bar{x},\bar{y})$ of the shapes. This allows us to determine their position in millimeters in the camera's coordinate system.
 
 Since the camera plane and the interaction plane (where the objects are placed) are parallel, this establishes a linear relationship between the coordinates of the objects in the camera's coordinate system and the robot's coordinate system.
 
 **Coordinate Transformation**
+
+The transformation between the source and destination coordinates is defined as follows:
 
 $$  \begin{bmatrix} 
 x' \\ 
@@ -55,7 +56,7 @@ z \\
 1 
 \end{bmatrix}$$
 
-Où :
+Where :
 
 - $(x, y, z)$ are the coordinates of the source point,
 - $(x', y', z')$ are the coordinates of the transformed point (destination),
@@ -64,7 +65,14 @@ Où :
 
 In this context, the matrix
 
-$$ \begin{bmatrix} a & b & c & t_x \\ d & e & f & t_y \\ g & h & i & t_z \\ 0 & 0 & 0 & 1 \end{bmatrix}$$  
+$$ 
+\begin{bmatrix} 
+a & b & c & t_x \\ 
+d & e & f & t_y \\ 
+g & h & i & t_z \\ 
+0 & 0 & 0 & 1 
+\end{bmatrix} 
+$$
 
 is called an affine transformation matrix, where the coefficients of this matrix correspond to the parameters of the affine transformation. This matrix is obtained by performing a linear resolution using four points with known coordinates in both reference frames. We then find the coordinates of the object in the robot's coordinate system.
 
